@@ -30,6 +30,9 @@ public:
     bool returnBook(const string& memberId, const string& isbn, const string& returnDate);
     bool removeBook(const string& isbn);
     bool removeMember(const string& memberId);
+    
+    Book* searchBookByIsbn(const string& isbn);
+    Book* searchBookByTitle(const string& title);
 };
 
 #endif // LIBRARY_H

@@ -181,3 +181,16 @@ bool Library::removeMember(const string& memberId) {
     return false;
 }
 
+Book* Library::searchBookByIsbn(const string& isbn) {
+    return findBook(isbn); 
+}
+
+Book* Library::searchBookByTitle(const string& title) {
+    for (auto& book : books) {
+        if (book.getTitle() == title) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+
