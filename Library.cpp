@@ -138,3 +138,25 @@ bool Library::returnBook(const string& memberId, const string& isbn, const strin
     return true;
 }
 
+bool Library::removeBook(const string& isbn) {
+    // Can not remove if book is currently on loan
+    for (const auto& loan : loans) {
+        if (loan.getIsbn() == isbn && loan.isActive()) {
+            cout << "Cannot remove book, it is currently on loan." << endl;
+            return false;
+        }
+    }
+
+    // Find and erase book
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->getIsbn() == isbn) {
+            books.erase(it);
+            cout << "Book removed successfully." << endl;
+            return true;
+        }
+    }
+
+    cout << "Book not found." << endl;
+    return false;
+}
+
