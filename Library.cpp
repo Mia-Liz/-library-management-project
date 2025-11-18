@@ -194,3 +194,18 @@ Book* Library::searchBookByTitle(const string& title) {
     return nullptr;
 }
 
+void Library::addCD(const CD& cd) {
+    cds.push_back(cd);
+}
+
+void Library::listCDs() const {
+    cout << "=== CD List ===" << endl;
+    if (cds.empty()) {
+        cout << "No CDs in the library." << endl;
+        return;
+    }
+    for (const auto& cd : cds) {
+        cd.printInfo();
+    }
+}
+

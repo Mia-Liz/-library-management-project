@@ -27,6 +27,11 @@ int main() {
         cout << "4. List active loans" << endl;
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
+        cout << "7. Remove a book" << endl;
+        cout << "8. Remove a member" << endl;
+        cout << "9. Search book by ISBN" << endl;
+        cout << "10. Search book by title" << endl;
+        cout << "11. List CDs" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -65,6 +70,43 @@ int main() {
             library.returnBook(memberId, isbn, date);
             cout << endl;
         }
+        else if (option == 7) {
+            string isbn;
+            cout << "ISBN of book to remove: ";
+            cin >> isbn;
+            library.removeBook(isbn);
+            cout << endl;
+        }
+        else if (option == 8) {
+            string memberId;
+            cout << "Member ID to remove: ";
+            cin >> memberId;
+            library.removeMember(memberId);
+            cout << endl;
+        }
+        else if (option == 9) {
+            string isbn;
+            cout << "ISBN: ";
+            cin >> isbn;
+            Book* b = library.searchBookByIsbn(isbn);
+            if (b) b->printInfo();
+            else cout << "Book not found." << endl;
+            cout << endl;
+        }
+        else if (option == 10) {
+            string title;
+            cout << "Title: ";
+            cin >> ws;      
+            getline(cin, title);
+            Book* b = library.searchBookByTitle(title);
+            if (b) b->printInfo();
+            else cout << "Book not found." << endl;
+            cout << endl;
+        }
+        else if (option == 11) {
+            library.listCDs();
+        }
+
     } while (option != 0);
 
     cout << "Goodbye!" << endl;
