@@ -3,21 +3,20 @@
 
 #include <string>
 #include <iostream>
+#include "Item.h"
 
 using namespace std;
 
-class Book {
+class Book : public Item {
 private:
-    string title;
-    string author;
     string isbn;
-    int publicationYear;
 
 public:
-    Book(string t, string a, string i, int year);
+    Book(string t, string c, string i, int year);
+    
     string getIsbn() const;
-    string getTitle() const;
-    void printInfo() const;
+
+    void printInfo() const override;
 };
 
 #endif // BOOK_H

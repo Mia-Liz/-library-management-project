@@ -3,25 +3,21 @@
 
 #include <string>
 #include <iostream>
+#include "Item.h"
 
 using namespace std;
 
-class CD {
+class CD : public Item {
 private:
-    string title;
-    string artist;
-    string id;    // unique CD ID
-    int year;
+    string upc;
 
 public:
-    CD(string t, string a, string id, int y);
-    string getId() const;
-    string getTitle() const;
-    string getArtist() const;
-    int getYear() const;
+    CD(string t, string c, string u, int year);
 
-    void printInfo() const;
+    string getUpc() const;
+    
+    void printInfo() const override;
 };
 
-#endif
+#endif // CD_H
 

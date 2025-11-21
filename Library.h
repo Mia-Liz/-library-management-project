@@ -23,6 +23,7 @@ private:
     Loan* findActiveLoan(const string& memberId, const string& isbn);
 
 public:
+    int count = 1;
     void addBook(const Book& book);
     void addMember(const Member& member);
     void listBooks() const;

@@ -1,17 +1,15 @@
 #include "CD.h"
 
-CD::CD(string t, string a, string i, int y)
-    : title(t), artist(a), id(i), year(y) {}
+CD::CD(string t, string c, string u, int year)
+    : Item (t, c, year), upc(u) {}
 
-string CD::getId() const { return id; }
-string CD::getTitle() const { return title; }
-string CD::getArtist() const { return artist; }
-int CD::getYear() const { return year; }
+string CD::getUpc() const { return upc; }
 
 void CD::printInfo() const {
     cout << "CD - Title: " << title
-         << " | Artist: " << artist
-         << " | ID: " << id
-         << " | Year: " << year << endl;
+        << " | Artist: " << creator
+        << " | UPC: " << upc
+        << " | Year: " << publicationYear 
+        << endl;
 }
 
