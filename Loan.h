@@ -8,31 +8,23 @@ using namespace std;
 
 class Loan {
 private:
-    string itemId;      // ISBN for Book or UPC for CD
-    string memberId;    // who borrowed it
-    string borrowDate;  // simple string for this example
-    string returnDate;  // empty = still borrowed
+    string itemId;
+    string memberId;
+    string borrowDate;
+    string returnDate;
 
 public:
-    Loan(const string& i, const string& m, const string& bDate)
-        : itemId(i), memberId(m), borrowDate(bDate), returnDate("") {}
+    Loan(const string& i, const string& m, const string& bDate);
 
-    string getItemId() const { return itemId; }
-    string getMemberId() const { return memberId; }
-    string getBorrowDate() const { return borrowDate; }
-    string getReturnDate() const { return returnDate; }
-    bool isActive() const { return returnDate.empty(); }
-    void setReturnDate(const string& rDate) { returnDate = rDate; }
+    string getItemId() const;
+    string getMemberId() const;
+    string getBorrowDate() const;
+    string getReturnDate() const;
 
-    void printInfo() const {
-        cout << "Item ID: " << itemId
-             << " | Member ID: " << memberId
-             << " | Borrow Date: " << borrowDate
-             << " | Return Date: " << (returnDate.empty() ? "Not returned" : returnDate)
-             << endl;
-    }
+    bool isActive() const;
+    void setReturnDate(const string& rDate);
+
+    void printInfo() const;
 };
 
-#endif // LOAN_H
-
-
+#endif
