@@ -19,9 +19,9 @@ void Loan::setReturnDate(const string& rDate) {
 
 void Loan::printInfo() const {
     cout << "Item ID: " << itemId
-         << " | Member ID: " << memberId
-         << " | Borrow Date: " << borrowDate
-         << " | Return Date: "
-         << (returnDate.empty() ? "Not returned" : returnDate)
-         << endl;
+        << " | Member ID: " << memberId
+        << " | Borrow Date: " << borrowDate
+        << " | Return Date: "
+        << (returnDate.empty() ? "Not returned" : returnDate)
+        << endl;
 }

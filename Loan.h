@@ -8,10 +8,10 @@ using namespace std;
 
 class Loan {
 private:
-    string itemId;
-    string memberId;
-    string borrowDate;
-    string returnDate;
+    string itemId;      // ISBN for Book or UPC for CD
+    string memberId;    // who borrowed it
+    string borrowDate;  // simple string for this example
+    string returnDate;  // empty = still borrowed
 
 public:
     Loan(const string& i, const string& m, const string& bDate);
