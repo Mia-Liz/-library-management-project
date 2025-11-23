@@ -2,44 +2,48 @@
 #define LIBRARY_H
 
 #include <vector>
+#include "Item.h"
 #include "Book.h"
+#include "CD.h"
 #include "Member.h"
 #include "Loan.h"
-#include "CD.h"
 
 using namespace std;
 
 class Library {
 private:
-    vector<Book> books;
+    vector<Item*> items;
     vector<Member> members;
     vector<Loan> loans;
-    vector<CD> cds;
 
-    Book* findBook(const string& isbn);
+    Item* findItem(const string& itemId);
     Member* findMember(const string& memberId);
     int countActiveLoansForMember(const string& memberId) const;
-    bool isBookAvailable(const string& isbn) const;
-    Loan* findActiveLoan(const string& memberId, const string& isbn);
+    bool isItemAvailable(const string& itemId) const;
+    Loan* findActiveLoan(const string& memberId, const string& itemId);
 
 public:
     int count = 1;
+
+    // Items
     void addBook(const Book& book);
-    void addMember(const Member& member);
-    void listBooks() const;
-    void listMembers() const;
-    void listLoans(bool onlyActive = false) const;
-    bool borrowBook(const string& memberId, const string& isbn, const string& borrowDate);
-    bool returnBook(const string& memberId, const string& isbn, const string& returnDate);
-    bool removeBook(const string& isbn);
-    bool removeMember(const string& memberId);
-
-    Book* searchBookByIsbn(const string& isbn);
-    Book* searchBookByTitle(const string& title);
-
     void addCD(const CD& cd);
-    void listCDs() const;
+    void listItems() const;
+    Item* searchItemById(const string& id);  // ISBN for Book - UPC for CD
+    Item* searchItemByTitle(const string& title);
 
+    ~Library();  // Declare the destructor
+
+    // Members
+    void addMember(const Member& member);
+    void listMembers() const;
+
+    // Loans
+    void listLoans(bool onlyActive = false) const;
+    bool borrowItem(const string& memberId, const string& itemId, const string& borrowDate);
+    bool returnItem(const string& memberId, const string& itemId, const string& returnDate);
+    bool removeItem(const string& itemId);
+    bool removeMember(const string& memberId);
 };
 
 #endif // LIBRARY_H

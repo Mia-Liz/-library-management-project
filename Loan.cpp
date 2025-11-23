@@ -1,10 +1,11 @@
 #include "Loan.h"
+#include <iostream>
 
-Loan::Loan(string i, string m, string bDate)
-    : isbn(i), memberId(m), borrowDate(bDate), returnDate("") {}
+Loan::Loan(const string& i, const string& m, const string& bDate)
+    : itemId(i), memberId(m), borrowDate(bDate), returnDate("") {}
 
-string Loan::getIsbn() const {
-    return isbn;
+string Loan::getItemId() const {
+    return itemId;
 }
 
 string Loan::getMemberId() const {
@@ -20,7 +21,7 @@ string Loan::getReturnDate() const {
 }
 
 bool Loan::isActive() const {
-    return returnDate == "";
+    return returnDate.empty();
 }
 
 void Loan::setReturnDate(const string& rDate) {
@@ -28,11 +29,12 @@ void Loan::setReturnDate(const string& rDate) {
 }
 
 void Loan::printInfo() const {
-    cout << "Loan - ISBN: " << isbn
+    cout << "Loan - Item ID: " << itemId
          << " | Member ID: " << memberId
          << " | Borrowed: " << borrowDate
          << " | Returned: "
-         << (returnDate == "" ? "NOT RETURNED" : returnDate)
+         << (returnDate.empty() ? "NOT RETURNED" : returnDate)
          << endl;
 }
+
 
